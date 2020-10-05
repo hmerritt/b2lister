@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { api } from "../../utils/api";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import File from "./File";
 
 function Files({ bucket }) {
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useLocalStorage(bucket, []);
 
     useEffect(() => {
         api()
@@ -14,7 +15,7 @@ function Files({ bucket }) {
                 setFiles(res.data);
                 console.log("Files", res.data);
             });
-    }, [bucket]);
+    }, [bucket, setFiles]);
 
     return (
         <div className="files-container">
