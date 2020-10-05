@@ -34,6 +34,7 @@ function File({ bucket, file }) {
     return (
         <a
             href={`https://f002.backblazeb2.com/file/${bucket}/${file.fileName}`}
+            rel="noopener noreferrer"
             target="_blank"
         >
             <div className="file">
