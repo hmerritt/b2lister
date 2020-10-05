@@ -5,8 +5,13 @@ const app = require("./app");
  * Returns list of bucket files
  */
 router.post("/bucket/files", validatePostData(), async (req, res, next) => {
-    const files = await app.ListBucketFiles(req.body.bucket);
-    res.send(files);
+    try {
+        const files = await app.ListBucketFiles(req.body.bucket);
+        res.send(files);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send([]);
+    }
 });
 
 /*
