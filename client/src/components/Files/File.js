@@ -14,6 +14,10 @@ function File({ bucket, file }) {
             fileTypeImage = "audio";
             break;
 
+        case file.contentType.includes("image/"):
+            fileTypeImage = "image";
+            break;
+
         case file.contentType.includes("pdf"):
             fileTypeImage = "pdf";
             break;
