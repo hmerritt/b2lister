@@ -47,8 +47,10 @@ function File({ bucket, file }) {
                 <div className="file-icon">
                     <Icon name={fileTypeImage} isRounded={true} />
                 </div>
-                <div className="file-name">{fileName}</div>
-                <div className="file-path">{filePath.join("/")}</div>
+                <div className="file-name">
+                    {fileName}
+                    <div className="file-path">{filePath.join("/")}</div>
+                </div>
                 <div className="file-uploaded">
                     {moment(file.uploadTimestamp).format("ll")}
                 </div>

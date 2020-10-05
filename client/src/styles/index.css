@@ -143,6 +143,7 @@ header {
     width: 0;
     padding-right: 80px;
     font-size: 1.15em;
+    line-height: 16px;
     letter-spacing: 0.4px;
     overflow: hidden;
     white-space: nowrap;
@@ -150,7 +151,12 @@ header {
 }
 
 .file-path {
-    margin-right: 20px;
+    opacity: 0.8;
+    font-size: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    letter-spacing: normal;
 }
 
 .file-uploaded {
