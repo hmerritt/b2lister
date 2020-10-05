@@ -116,7 +116,8 @@ section {
 }
 
 .file-size {
-    width: 5em;
+    width: 7em;
     display: flex;
     justify-content: flex-end;
+    text-transform: uppercase;
 }
