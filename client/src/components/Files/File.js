@@ -33,17 +33,22 @@ function File({ bucket, file }) {
             fileTypeImage = "file";
     }
 
+    let filePath = file.fileName.split("/");
+    let fileName = filePath.pop();
+
     return (
         <a
             href={`https://f002.backblazeb2.com/file/${bucket}/${file.fileName}`}
             rel="noopener noreferrer"
             target="_blank"
+            draggable="true"
         >
             <div className="file">
                 <div className="file-icon">
                     <Icon name={fileTypeImage} isRounded={true} />
                 </div>
-                <div className="file-name">{file.fileName}</div>
+                <div className="file-name">{fileName}</div>
+                <div className="file-path">{filePath.join("/")}</div>
                 <div className="file-uploaded">
                     {moment(file.uploadTimestamp).format("ll")}
                 </div>
