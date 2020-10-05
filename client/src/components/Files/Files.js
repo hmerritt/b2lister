@@ -19,7 +19,7 @@ function Files({ bucket, setHasError }) {
                 setHasError(true);
                 console.log("Files Error", err);
             });
-    }, [bucket, setFiles, setHasError]);
+    }, []);
 
     return (
         <div className="files-container">

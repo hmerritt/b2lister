@@ -16,30 +16,30 @@ function App() {
     }, [bucket]);
 
     return (
-        <div className="App app-wrapper">
+        <div className="App app-wrapper" haserror={`${hasError}`}>
             <div className="container">
                 <header className="App-header">
                     <h1>b2lister | {bucket}</h1>
                 </header>
 
                 <section>
-                    {!hasError ? (
-                        <Files bucket={bucket} setHasError={setHasError} />
-                    ) : (
-                        <>
-                            <div className="error">
-                                <h2>Unable to fetch file list</h2>
-                                <p>
-                                    Things to try: <br />
-                                    <br />
-                                    - ?bucket= <br />- incorrect bucket name
-                                </p>
-                            </div>
-                        </>
+                    {hasError && (
+                        <div className="error">
+                            <h2>Unable to fetch file list</h2>
+                            <p>
+                                Things to try: <br />
+                                <br />
+                                - ?bucket= <br />- incorrect bucket name
+                            </p>
+                        </div>
                     )}
                 </section>
+
+                <section>
+                    <Files bucket={bucket} setHasError={setHasError} />
+                </section>
             </div>
-            <div className="background-color" haserror={`${hasError}`}></div>
+            <div className="background-color"></div>
         </div>
     );
 }
