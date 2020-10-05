@@ -1,4 +1,6 @@
 import React from "react";
+import moment from "moment";
+import filesize from "filesize.js";
 
 import Icon from "../Icon";
 
@@ -42,9 +44,10 @@ function File({ bucket, file }) {
                     <Icon name={fileTypeImage} isRounded={true} />
                 </div>
                 <div className="file-name">{file.fileName}</div>
-                <div className="file-size">
-                    {(file.contentLength / 1024 / 1024 / 1024).toFixed(2)} GB
+                <div className="file-uploaded">
+                    {moment(file.uploadTimestamp).format("ll")}
                 </div>
+                <div className="file-size">{filesize(file.contentLength)}</div>
             </div>
         </a>
     );
