@@ -5,7 +5,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 import File from "./File";
 
-function Files({ bucket }) {
+function Files({ bucket, setHasError }) {
     const [files, setFiles] = useLocalStorage(bucket, []);
 
     useEffect(() => {
@@ -14,8 +14,12 @@ function Files({ bucket }) {
             .then((res) => {
                 setFiles(res.data);
                 console.log("Files", res.data);
+            })
+            .catch((err) => {
+                setHasError(true);
+                console.log("Files Error", err);
             });
-    }, [bucket, setFiles]);
+    }, [bucket, setFiles, setHasError]);
 
     return (
         <div className="files-container">

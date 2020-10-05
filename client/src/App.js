@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import Files from "./components/Files/Files";
 
 function App() {
+    // Parse url param for "bucket"
     const params = new URLSearchParams(window.location.search);
     const urlBucket = params.get("bucket") || "";
 
-    // Set bucket to fetch file-list from
+    // Set state
     const [bucket, setBucket] = useState(urlBucket);
+    const [hasError, setHasError] = useState(false);
 
     useEffect(() => {
         document.title = `${bucket} | b2lister`;
@@ -17,13 +19,27 @@ function App() {
         <div className="App app-wrapper">
             <div className="container">
                 <header className="App-header">
-                    <h1>b2lister</h1>
+                    <h1>b2lister | {bucket}</h1>
                 </header>
 
                 <section>
-                    <Files bucket={bucket} />
+                    {!hasError ? (
+                        <Files bucket={bucket} setHasError={setHasError} />
+                    ) : (
+                        <>
+                            <div className="error">
+                                <h2>Unable to fetch file list</h2>
+                                <p>
+                                    Things to try: <br />
+                                    <br />
+                                    - ?bucket= <br />- incorrect bucket name
+                                </p>
+                            </div>
+                        </>
+                    )}
                 </section>
             </div>
+            <div className="background-color" haserror={`${hasError}`}></div>
         </div>
     );
 }
