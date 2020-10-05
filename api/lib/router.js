@@ -5,7 +5,8 @@ const app = require("./app");
  * Returns list of bucket files
  */
 router.post("/bucket/files", validatePostData(), async (req, res, next) => {
-    res.send({});
+    const files = await app.ListBucketFiles(req.body.bucket);
+    res.send(files);
 });
 
 /*
@@ -18,7 +19,7 @@ function validatePostData() {
         } else {
             res.status(400).json({
                 error: "missing post data",
-                msg: "bucket: name-of-bucket"
+                msg: "bucket: name-of-bucket",
             });
         }
     };

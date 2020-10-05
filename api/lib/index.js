@@ -14,7 +14,7 @@ server.use("/", router);
 server.get("/", (req, res) => {
     res.send({
         message: "Hello, world!",
-        version: pkg.version
+        version: pkg.version,
     });
 });
 
