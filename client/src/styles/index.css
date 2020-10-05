@@ -8,7 +8,7 @@ html {
 
 body,
 html {
-    font-family: "Tahoma", "Raleway", "Roboto", sans-serif;
+    font-family: "Roboto", "Tahoma", "Raleway", sans-serif;
 }
 
 body {
@@ -30,8 +30,8 @@ h3,
 h4,
 h5 {
     cursor: default;
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 400;
 }
 
 h2 {
@@ -83,23 +83,32 @@ section {
     }
 }
 
+header {
+    /* margin-top: 40px; */
+    color: #333;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #bbb;
+}
+
 .file {
-    height: 40px;
-    margin: 12px 0;
+    font-weight: 500;
+    color: #333;
+    height: 48px;
     padding: 0 15px;
-    background-color: #fcfcfc;
+    border-bottom: 1px solid #ededed;
     display: flex;
     align-items: center;
 }
 .file:hover {
-    background-color: #f1f1f1;
+    background-color: #fcfcfc;
 }
 
 .file-icon {
     width: 4em;
 }
 .file-icon path {
-    fill: #444;
+    fill: #676767;
 }
 
 .file-name {
@@ -108,11 +117,21 @@ section {
     -ms-flex: 1 1 0;
     width: 0;
     padding-right: 80px;
-    font-size: 1.2em;
+    font-size: 1.15em;
     letter-spacing: 0.4px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.file-path {
+    margin-right: 20px;
+}
+
+.file-uploaded {
+    width: 8em;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .file-size {
