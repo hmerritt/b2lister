@@ -1,14 +1,12 @@
 {
     "name": "b2lister",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Lists all contents of a b2 bucket",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
         "start:watch": "nodemon index.js"
     },
-    "author": "Harry Merritt",
-    "license": "ISC",
     "dependencies": {
         "backblaze-b2": "^1.5.0",
         "cors": "^2.8.5",
@@ -19,5 +17,7 @@
     "devDependencies": {
         "eslint": "^7.10.0",
         "nodemon": "^2.0.4"
-    }
+    },
+    "author": "Harry Merritt",
+    "license": "ISC"
 }
