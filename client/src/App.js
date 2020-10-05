@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import Files from "./components/Files/Files";
 
 function App() {
-    const [bucket, setBucket] = useState("collection-2001");
+    const params = new URLSearchParams(window.location.search);
+    const urlBucket = params.get("bucket") || "";
+
+    // Set bucket to fetch file-list from
+    const [bucket, setBucket] = useState(urlBucket);
 
     useEffect(() => {
         document.title = `${bucket} | b2lister`;
