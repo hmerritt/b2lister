@@ -1,4 +1,5 @@
 const B2 = require("backblaze-b2");
+require("dotenv").config();
 
 const b2 = new B2({
     applicationKeyId: process.env.B2_KEY_ID || "applicationKeyId", // or accountId: 'accountId'
