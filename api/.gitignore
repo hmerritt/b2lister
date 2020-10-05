@@ -1,0 +1,8 @@
+
+node_modules/
+
+*.log
+*.tar
+*.tar.gz
+package-lock.json
+yarn.lock
