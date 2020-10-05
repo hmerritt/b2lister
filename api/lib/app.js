@@ -12,13 +12,17 @@ async function GetBucket(bucket_name) {
     return response.data.buckets[0];
 }
 
-async function ListBucketFiles(bucket_name) {
-    const bucket = await GetBucket(bucket_name);
+async function ListBuckets() {
+    await b2.authorize(); // must authorize first
+    const response = await b2.listBuckets();
+    return response.data.buckets;
+}
 
+async function ListBucketFiles(bucket_id) {
     let response = await b2.listFileNames({
-        bucketId: bucket.bucketId,
+        bucketId: bucket_id,
         startFileName: null,
-        maxFileCount: 100,
+        maxFileCount: 200,
         delimiter: "",
         prefix: "",
     });
@@ -28,5 +32,6 @@ async function ListBucketFiles(bucket_name) {
 
 module.exports = {
     GetBucket,
+    ListBuckets,
     ListBucketFiles,
 };
