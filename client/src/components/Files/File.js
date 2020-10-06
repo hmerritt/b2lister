@@ -3,39 +3,13 @@ import moment from "moment";
 import filesize from "filesize.js";
 import copy from "copy-to-clipboard";
 
+import { fileTypeImage } from "../../utils/files";
+
 import TooltipSticky from "../TooltipSticky";
 import Icon from "../Icon";
 
 function File({ bucket, file }) {
     const link = `https://f002.backblazeb2.com/file/${bucket}/${file.fileName}`;
-
-    let fileTypeImage = "file";
-
-    switch (true) {
-        case file.contentType.includes("video/"):
-            fileTypeImage = "video";
-            break;
-
-        case file.contentType.includes("audio/"):
-            fileTypeImage = "audio";
-            break;
-
-        case file.contentType.includes("image/"):
-            fileTypeImage = "image";
-            break;
-
-        case file.contentType.includes("pdf"):
-            fileTypeImage = "pdf";
-            break;
-
-        case file.contentType.includes("compressed"):
-        case file.contentType.includes("zip"):
-            fileTypeImage = "zip";
-            break;
-
-        default:
-            fileTypeImage = "file";
-    }
 
     let filePath = file.fileName.split("/");
     let fileName = filePath.pop();
@@ -72,7 +46,10 @@ function File({ bucket, file }) {
                     }}
                 >
                     <div className="file-icon">
-                        <Icon name={fileTypeImage} isRounded={true} />
+                        <Icon
+                            name={fileTypeImage(file.contentType)}
+                            isRounded={true}
+                        />
                     </div>
                     <div className="file-name">
                         {fileName}
