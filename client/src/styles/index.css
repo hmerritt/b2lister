@@ -111,6 +111,17 @@ header {
     border-bottom: 1px solid #bbb;
 }
 
+.tooltip-sticky {
+    position: fixed;
+    z-index: 10;
+    /* display: none; */
+    /* text-transform: capitalize; */
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .file {
     font-weight: 500;
     height: 48px;

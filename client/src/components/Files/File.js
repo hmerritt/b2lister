@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import filesize from "filesize.js";
 import copy from "copy-to-clipboard";
 
+import TooltipSticky from "../TooltipSticky";
 import Icon from "../Icon";
 
 function File({ bucket, file }) {
@@ -39,41 +40,68 @@ function File({ bucket, file }) {
     let filePath = file.fileName.split("/");
     let fileName = filePath.pop();
 
+    // Tooltip
+    const [tooltipText, setTooltipText] = useState("");
+    const [isTooltipActive, setIsTooltipActive] = useState(false);
+
     // Copy text to clipboard
     const copyText = (e, text) => {
         e.preventDefault();
         copy(text, { message: "Press #{key} to copy" });
+        setTooltipText("copied!");
         return false;
     };
 
     return (
-        <a
-            href={link}
-            rel="noopener noreferrer"
-            target="_blank"
-            draggable="true"
-        >
-            <div className="file">
-                <div className="file-icon">
-                    <Icon name={fileTypeImage} isRounded={true} />
-                </div>
-                <div className="file-name">
-                    {fileName}
-                    <div className="file-path">{filePath.join("/")}</div>
-                </div>
-                <div className="file-uploaded">
-                    {moment(file.uploadTimestamp).format("ll")}
-                </div>
-                <div className="file-size">{filesize(file.contentLength)}</div>
+        <>
+            <a
+                href={link}
+                rel="noopener noreferrer"
+                target="_blank"
+                draggable="true"
+            >
                 <div
-                    className="file-copy file-icon"
-                    onClick={(e) => copyText(e, link)}
-                    title="Copy link to file"
+                    className="file"
+                    onMouseEnter={() => {
+                        setTooltipText("download " + fileName);
+                        setIsTooltipActive(true);
+                    }}
+                    onMouseLeave={() => {
+                        setTooltipText("");
+                        setIsTooltipActive(false);
+                    }}
                 >
-                    <Icon name="copy" isRounded={true} />
+                    <div className="file-icon">
+                        <Icon name={fileTypeImage} isRounded={true} />
+                    </div>
+                    <div className="file-name">
+                        {fileName}
+                        <div className="file-path">{filePath.join("/")}</div>
+                    </div>
+                    <div className="file-uploaded">
+                        {moment(file.uploadTimestamp).format("ll")}
+                    </div>
+                    <div className="file-size">
+                        {filesize(file.contentLength)}
+                    </div>
+                    <div
+                        className="file-copy file-icon"
+                        onClick={(e) => copyText(e, link)}
+                        onMouseEnter={() => {
+                            setTooltipText("copy download url");
+                            setIsTooltipActive(true);
+                        }}
+                        onMouseLeave={() => {
+                            setTooltipText("download");
+                        }}
+                        // title="Copy link to file"
+                    >
+                        <Icon name="copy" isRounded={true} />
+                    </div>
                 </div>
-            </div>
-        </a>
+                <TooltipSticky text={tooltipText} isActive={isTooltipActive} />
+            </a>
+        </>
     );
 }
 
