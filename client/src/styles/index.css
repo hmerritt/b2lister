@@ -196,3 +196,27 @@ header {
     justify-content: flex-end;
     text-transform: uppercase;
 }
+
+@media (max-width: 800px) {
+    .file-name {
+        padding-right: 40px;
+    }
+    .file-uploaded {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .file-name {
+        padding-right: 10px;
+    }
+    .file-size {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .file-name {
+        padding-right: 0px;
+    }
+}

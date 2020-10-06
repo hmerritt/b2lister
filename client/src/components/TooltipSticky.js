@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 
 function TooltipSticky({ text, isActive }) {
     // Tooltip position
@@ -21,7 +22,7 @@ function TooltipSticky({ text, isActive }) {
 
     return (
         <>
-            {true && (
+            {isActive && !isMobile && (
                 <div
                     className="tooltip-sticky"
                     style={{ left: position[0], top: position[1] }}
