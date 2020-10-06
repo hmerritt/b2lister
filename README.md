@@ -1,9 +1,13 @@
 # Backblaze B2 File Lister
+
 Lists all contents of a b2 bucket
 
+![](https://travis-ci.org/hmerritt/b2lister.svg?branch=master)
 
 ## API
+
 ### Settings (API keys)
+
 1. Create `.env` file in the root api directory (where `package.json` is)
 2. Add backblaze-b2 api keys into `.env` as follows;
 
@@ -15,24 +19,26 @@ B2_SHOW_PRIVATE_BUCKETS=false
 
 3. Start server using `npm start`
 
-
 ### Endpoints
+
 #### GET `/buckets`
+
 Returns a list of buckets
 
 #### POST `/bucket/files`
+
 Returns a list of the buckets files
 
 ```json
 Required POST data to send
 
 {
-	bucket: name_of_bucket
+  "bucket": "name_of_bucket"
 }
 ```
 
-
 ## Client
+
 1. Create `.env` file in the root api directory (where `package.json` is)
 2. Add api location into `.env` as follows;
 
