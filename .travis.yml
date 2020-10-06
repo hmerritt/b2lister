@@ -3,10 +3,11 @@ sudo: required
 if: type = push AND branch = master
 
 env:
-  - DOCKER_REPO: hmerritt/b2lister
-  - BUILDX_PLATFORM: linux/amd64,linux/arm64,linux/arm/v7
-  - DOCKER_BUILD_KIT=1
-  - DOCKER_CLI_EXPERIMENTAL=enabled
+  global:
+    - DOCKER_REPO=hmerritt/b2lister
+    - BUILDX_PLATFORM=linux/amd64,linux/arm64,linux/arm/v7
+    - DOCKER_BUILD_KIT=1
+    - DOCKER_CLI_EXPERIMENTAL=enabled
 
 before_install:
   - curl -fsSL https://get.docker.com | sh
