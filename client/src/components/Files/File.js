@@ -63,7 +63,7 @@ function File({ bucket, file }) {
                 <div
                     className="file"
                     onMouseEnter={() => {
-                        setTooltipText("download " + fileName);
+                        setTooltipText("download");
                         setIsTooltipActive(true);
                     }}
                     onMouseLeave={() => {

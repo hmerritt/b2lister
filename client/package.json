@@ -1,6 +1,6 @@
 {
     "name": "b2lister-client",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Lists all contents of a b2 bucket",
     "author": "Harry Merritt",
     "private": true,
@@ -19,6 +19,7 @@
         "filesize.js": "^2.0.0",
         "moment": "^2.29.0",
         "react": "^16.13.1",
+        "react-device-detect": "^1.14.0",
         "react-dom": "^16.13.1",
         "react-scripts": "3.4.3",
         "react-svg": "^11.0.42"

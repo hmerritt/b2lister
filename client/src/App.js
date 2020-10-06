@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import Buckets from "./components/Buckets/Buckets";
 import Files from "./components/Files/Files";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <div className="App app-wrapper" haserror={`${hasError}`}>
             <div className="container">
                 <header className="App-header">
-                    <h1>b2lister | {bucket}</h1>
+                    <h1>b2lister | {bucket || "buckets"}</h1>
                 </header>
 
                 <section>
@@ -30,13 +31,18 @@ function App() {
                                 Things to try: <br />
                                 <br />
                                 - ?bucket= <br />- incorrect bucket name
+                                <br />- private bucket
                             </p>
                         </div>
                     )}
                 </section>
 
                 <section>
-                    <Files bucket={bucket} setHasError={setHasError} />
+                    {bucket.length > 0 ? (
+                        <Files bucket={bucket} setHasError={setHasError} />
+                    ) : (
+                        <Buckets setHasError={setHasError} />
+                    )}
                 </section>
             </div>
             <div className="background-color"></div>
