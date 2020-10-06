@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  b2lister:
+    build: .
+
+    environment:
+      - B2_KEY_ID=
+      - B2_KEY_APPLICATION=
+      - B2_SHOW_PRIVATE_BUCKETS=false
+      - REACT_APP_API=
+
+    ports:
+      - 9950:80
+      - 9951:8000
