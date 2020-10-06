@@ -1,10 +1,13 @@
 import React from "react";
 import moment from "moment";
 import filesize from "filesize.js";
+import copy from "copy-to-clipboard";
 
 import Icon from "../Icon";
 
 function File({ bucket, file }) {
+    const link = `https://f002.backblazeb2.com/file/${bucket}/${file.fileName}`;
+
     let fileTypeImage = "file";
 
     switch (true) {
@@ -36,9 +39,16 @@ function File({ bucket, file }) {
     let filePath = file.fileName.split("/");
     let fileName = filePath.pop();
 
+    // Copy text to clipboard
+    const copyText = (e, text) => {
+        e.preventDefault();
+        copy(text, { message: "Press #{key} to copy" });
+        return false;
+    };
+
     return (
         <a
-            href={`https://f002.backblazeb2.com/file/${bucket}/${file.fileName}`}
+            href={link}
             rel="noopener noreferrer"
             target="_blank"
             draggable="true"
@@ -55,6 +65,13 @@ function File({ bucket, file }) {
                     {moment(file.uploadTimestamp).format("ll")}
                 </div>
                 <div className="file-size">{filesize(file.contentLength)}</div>
+                <div
+                    className="file-copy file-icon"
+                    onClick={(e) => copyText(e, link)}
+                    title="Copy link to file"
+                >
+                    <Icon name="copy" isRounded={true} />
+                </div>
             </div>
         </a>
     );

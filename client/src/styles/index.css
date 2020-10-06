@@ -165,6 +165,20 @@ header {
     justify-content: flex-end;
 }
 
+.file-copy {
+    width: 5em;
+    padding: 1em 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.file-copy svg {
+    width: 18px;
+    height: 18px;
+}
+.file-copy:hover {
+    opacity: 0.4;
+}
+
 .file-size {
     width: 7em;
     display: flex;
