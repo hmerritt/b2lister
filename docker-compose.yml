@@ -8,6 +8,7 @@ services:
       - B2_KEY_ID=
       - B2_KEY_APPLICATION=
       - B2_SHOW_PRIVATE_BUCKETS=false
+      - B2_DOWNLOAD_BASE_URI="https://f002.backblazeb2.com/file"
       - REACT_APP_API=
 
     ports:

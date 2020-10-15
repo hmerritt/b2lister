@@ -40,8 +40,9 @@ Required POST data to send
 ## Client
 
 1. Create `.env` file in the root api directory (where `package.json` is)
-2. Add api location into `.env` as follows;
+2. Add api location and B2 download uri base into `.env` as follows;
 
 ```bash
 REACT_APP_API=http://localhost:5000
+B2_DOWNLOAD_BASE_URI=https://f002.backblazeb2.com/file
 ```
