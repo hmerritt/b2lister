@@ -13,6 +13,7 @@ export const fileTypeImage = (contentType) => {
             return "pdf";
 
         case contentType.includes("compressed"):
+		case contentType.includes("tar"):
         case contentType.includes("zip"):
             return "zip";
 
