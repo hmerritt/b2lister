@@ -9,7 +9,7 @@ import TooltipSticky from "../TooltipSticky";
 import Icon from "../Icon";
 
 function File({ bucket, file }) {
-    const link = `${process.env.B2_DOWNLOAD_BASE_URI || "https://f002.backblazeb2.com/file"}/${bucket}/${file.fileName}`;
+    const link = `${process.env.B2_DOWNLOAD_BASE_URI || process.env.REACT_APP_B2_DOWNLOAD_BASE_URI || "https://f002.backblazeb2.com/file"}/${bucket}/${file.fileName}`;
 
     let filePath = file.fileName.split("/");
     let fileName = filePath.pop();
@@ -71,7 +71,7 @@ function File({ bucket, file }) {
                         onMouseLeave={() => {
                             setTooltipText("download");
                         }}
-                        // title="Copy link to file"
+                    // title="Copy link to file"
                     >
                         <Icon name="copy" isRounded={true} />
                     </div>
