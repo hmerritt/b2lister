@@ -12,18 +12,18 @@
         "eject": "react-scripts eject"
     },
     "dependencies": {
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
-        "axios": "^0.21.1",
-        "copy-to-clipboard": "^3.3.1",
-        "filesize.js": "^2.0.0",
-        "moment": "^2.29.0",
-        "react": "^16.13.1",
-        "react-device-detect": "^1.14.0",
-        "react-dom": "^16.13.1",
+        "@testing-library/jest-dom": "4.2.4",
+        "@testing-library/react": "9.3.2",
+        "@testing-library/user-event": "7.1.2",
+        "axios": "0.21.1",
+        "copy-to-clipboard": "3.3.1",
+        "filesize.js": "2.0.0",
+        "moment": "2.29.0",
+        "react": "16.13.1",
+        "react-device-detect": "1.14.0",
+        "react-dom": "16.13.1",
         "react-scripts": "3.4.3",
-        "react-svg": "^11.0.42"
+        "react-svg": "11.0.42"
     },
     "browserslist": {
         "production": [
