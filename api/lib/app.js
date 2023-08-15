@@ -18,16 +18,27 @@ async function ListBuckets() {
     return response.data.buckets;
 }
 
-async function ListBucketFiles(bucket_id, maxFileCount = 1000) {
-    let response = await b2.listFileNames({
-        bucketId: bucket_id,
-        startFileName: null,
-        maxFileCount,
-        delimiter: "",
-        prefix: "",
-    });
+async function ListBucketFiles(bucket_id, maxFileCount = 999) {
+    const files = [];
+    let startFileName = null;
 
-    return response.data.files;
+    while (true) {
+        const response = await b2.listFileNames({
+            bucketId: bucket_id,
+            startFileName: startFileName,
+            maxFileCount: maxFileCount >= 999 ? 999 : maxFileCount,
+            delimiter: "",
+            prefix: "",
+        });
+
+        files.push(...response.data.files);
+
+        if (files.length >= maxFileCount || response.data.nextFileName == null) break;
+
+        startFileName = response.data.nextFileName;
+    }
+
+    return files;
 }
 
 module.exports = {

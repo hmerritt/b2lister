@@ -10,7 +10,7 @@ function Files({ bucket, setHasError }) {
 
     useEffect(() => {
         api()
-            .post("/bucket/files", { bucket: bucket })
+            .post("/bucket/files", { bucket: bucket, maxFileCount: 2000 })
             .then((res) => {
                 setFiles(res.data);
                 console.log("Files", res.data);

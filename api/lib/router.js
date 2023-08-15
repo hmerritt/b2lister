@@ -44,7 +44,7 @@ router.post("/bucket/files", validatePostData(), async (req, res, next) => {
         }
 
         // Fetch file list
-        const files = await app.ListBucketFiles(bucket.bucketId);
+        const files = await app.ListBucketFiles(bucket.bucketId, req.body.maxFileCount || 999);
 
         res.send(files);
     } catch (err) {
