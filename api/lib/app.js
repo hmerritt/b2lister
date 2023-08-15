@@ -18,11 +18,11 @@ async function ListBuckets() {
     return response.data.buckets;
 }
 
-async function ListBucketFiles(bucket_id) {
+async function ListBucketFiles(bucket_id, maxFileCount = 1000) {
     let response = await b2.listFileNames({
         bucketId: bucket_id,
         startFileName: null,
-        maxFileCount: 200,
+        maxFileCount,
         delimiter: "",
         prefix: "",
     });
