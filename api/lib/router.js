@@ -43,8 +43,10 @@ router.post("/bucket/files", validatePostData(), async (req, res, next) => {
                 throw `ERROR: /files: private-bucket: ${req.body.bucket}`;
         }
 
+        console.log("debug:/bucket/files: maxFileCount", req.body.maxFileCount || 999);
+
         // Fetch file list
-        const files = await app.ListBucketFiles(bucket.bucketId, req.body.maxFileCount || 999);
+        const files = await app.ListBucketFiles(bucket.bucketId, Number(req.body.maxFileCount) || 999);
 
         res.send(files);
     } catch (err) {
